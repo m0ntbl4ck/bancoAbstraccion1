@@ -9,18 +9,20 @@ public class Cliente {
     
     private String nombres;
     private String apellidos;
-    private Cuenta[] cuentas;
+    private OperacionesCuenta[] cuentas;
     private int numeroDeCuentas;
+    private LineaDeServicio lineaDeServicio;
 
-    public Cliente(String nombres, String apellidos) {
+    public Cliente(String nombres, String apellidos,LineaDeServicio lineaDeServicio ) {
         this.nombres = nombres;
         this.apellidos = apellidos;
         
-        this.cuentas = new Cuenta[10];
+        this.cuentas = new OperacionesCuenta[10];
         this.numeroDeCuentas = 0;
+        this.lineaDeServicio =lineaDeServicio;
     }
     
-    public void agregarCuenta(Cuenta cuenta){
+    public void agregarCuenta(OperacionesCuenta cuenta){
         int i = numeroDeCuentas++;
         cuentas[i]=cuenta;
     }
@@ -33,9 +35,19 @@ public class Cliente {
         return apellidos;
     }
 
-    public Cuenta getCuenta(int indiceCuentas) {
+    public OperacionesCuenta getCuenta(int indiceCuentas) {
         return cuentas[indiceCuentas];
     }
+
+    public LineaDeServicio getLineaDeServicio() {
+        return lineaDeServicio;
+    }
+
+    public void setLineaDeServicio(LineaDeServicio lineaDeServicio) {
+        this.lineaDeServicio = lineaDeServicio;
+    }
+    
+    
 
     public int getNumeroDeCuentas() {
         return numeroDeCuentas;

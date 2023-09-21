@@ -5,7 +5,7 @@ package banco.main;
  *
  * @author mont_
  */
-public class CuentaDeAhorros extends Cuenta {
+public class CuentaDeAhorros extends Cuenta implements OperacionesCuenta{
     
     private final double limiteDeRetiros;
 
@@ -19,9 +19,6 @@ public class CuentaDeAhorros extends Cuenta {
     }
     
     
-    
-    
-    
     @Override
     public boolean retiros(double monto) {
         if(monto <= saldo && monto<=limiteDeRetiros ){
@@ -33,6 +30,21 @@ public class CuentaDeAhorros extends Cuenta {
     @Override
     public String getDescripcion() {
         return "Cuenta de Ahorros ";
+    }
+
+    @Override
+    public double getSaldo() {
+       return saldo;
+    }
+
+    @Override
+    public void deposito(double monto) {
+        saldo += monto;
+    }
+
+    @Override
+    public String toString() {
+        return this.getDescripcion()+"el saldo es de: "+this.getSaldo();
     }
     
 }

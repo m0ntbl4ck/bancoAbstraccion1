@@ -5,7 +5,7 @@ package banco.main;
  *
  * @author mont_
  */
-public class GuardarCuenta extends Cuenta{
+public class GuardarCuenta extends Cuenta implements OperacionesCuenta{
     
     double interes = 0.06;
 
@@ -33,7 +33,17 @@ public class GuardarCuenta extends Cuenta{
     public void deposito(double monto){
        saldo += monto;
        saldo -=  (saldo*interes);
-        System.out.println(saldo);
+    
    }
+
+    @Override
+    public double getSaldo() {
+      return saldo;
+    }
+
+    @Override
+    public String toString() {
+        return this.getDescripcion() + " El saldo es de : " + this.getSaldo();
+    }
     
 }

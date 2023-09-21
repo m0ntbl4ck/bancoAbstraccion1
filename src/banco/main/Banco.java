@@ -5,7 +5,7 @@ package banco.main;
  *
  * @author mont_
  */
-public class Banco {
+public class Banco implements OperacionesBanco{
     private Cliente[] clientes;
     private int numeroDeCuentas;
 
@@ -14,18 +14,27 @@ public class Banco {
         this.numeroDeCuentas = 0;
     }
     
-    public void agregarCliente(String nombres, String apellidos){
+    @Override
+    public void agregarCliente(String nombres, String apellidos,LineaDeServicio lineaDeServicio){
         int i = numeroDeCuentas++;
-        clientes[i] = new Cliente(nombres,apellidos);
+        clientes[i] = new Cliente(nombres,apellidos,lineaDeServicio);
     }
 
+   
+
+    @Override
+    public Cliente getClientes(int indiceDeCliente) {
+       return clientes[indiceDeCliente];
+    }
+
+    @Override
     public int getNumeroDeCuentas() {
         return numeroDeCuentas;
     }
 
-    public Cliente getClientes(int indiceDeCliente) {
-        return clientes[indiceDeCliente];
-    }
+   
+
+    
     
     
 }

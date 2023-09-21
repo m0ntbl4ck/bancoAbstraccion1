@@ -9,19 +9,16 @@ public class MainAstraccion {
 
     
     public static void main(String[] args) {
-        Banco banco = new Banco();
+        OperacionesBanco banco = new Banco();
         inicializarClientes(banco);
         
         
-        ReporteDeClientes reporte = new ReporteDeClientes();
+        banco.generarReporte();
         
-        reporte.setBanco(banco);
-        
-        reporte.generarReporte();
         
     }
     
-    private static void inicializarClientes(Banco banco) {
+    private static void inicializarClientes(OperacionesBanco banco) {
    
         Cliente cliente;
         Cliente cliente1;
@@ -30,13 +27,13 @@ public class MainAstraccion {
         Cliente cliente4;
         Cliente cliente5;
         
-        banco.agregarCliente("William", "Perez");
+        banco.agregarCliente("William", "Perez",LineaDeServicio.VISA);
         cliente = banco.getClientes(0);
         GuardarCuenta cuenta2 = new GuardarCuenta(500.00);
         cliente.agregarCuenta(cuenta2);
         
         
-        banco.agregarCliente("Juan", "Rodriguez");
+        banco.agregarCliente("Juan", "Rodriguez",LineaDeServicio.MASTERCARD);
         cliente1 = banco.getClientes(1);
         GuardarCuenta cuenta = new GuardarCuenta(300.00);
         
@@ -45,19 +42,19 @@ public class MainAstraccion {
         cuenta.deposito(100.00);
          System.out.println("la cuenta del man "+cliente1.getCuenta(0));
         
-        banco.agregarCliente("Juliana", "Rosa");
+        banco.agregarCliente("Juliana", "Rosa",LineaDeServicio.VISA);
         cliente2 = banco.getClientes(2);
         cliente2.agregarCuenta(new GuardarCuenta(400.00));
         
-        banco.agregarCliente("Alberto", "Cortes");
+        banco.agregarCliente("Alberto", "Cortes",LineaDeServicio.AMERICANEXPREES);
         cliente3 = banco.getClientes(3);
         cliente3.agregarCuenta(new GuardarCuenta(10000.00));
         
-        banco.agregarCliente("Jose", "Garzon");
+        banco.agregarCliente("Jose", "Garzon",LineaDeServicio.MASTERCARD);
         cliente4 = banco.getClientes(4);
         cliente4.agregarCuenta(new GuardarCuenta(2000.00));
         
-        banco.agregarCliente("Sofia", "Hernandez");
+        banco.agregarCliente("Sofia", "Hernandez",LineaDeServicio.VISA);
         cliente5 = banco.getClientes(5);
         GuardarCuenta cuenta1 = new GuardarCuenta(100.00);
         
